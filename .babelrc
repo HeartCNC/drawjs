@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "es2015"
+  ],
+  "plugins": [
+
+  ],
+  "ignore": [
+    "dist/*.js",
+    "node_modules/**/*.js"
+  ]
+}
