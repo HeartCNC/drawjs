@@ -37,7 +37,7 @@ export class Draw {
   image(options: ITexture): Draw {
     if (!options.image) {
       console.warn('Element Image Not Found.');
-      return
+      return this
     }
     const texture = new Texture(options)
     canvasRender(this.context, texture)
@@ -55,6 +55,13 @@ export class Draw {
     return this
   }
 
+  /**
+   * Clear the canvas
+   */
+  clear(): void {
+    this.context.clearRect(0, 0, this.__options.width, this.__options.height)
+  }
+
   line(): Draw {
     return this
   }
@@ -63,17 +70,11 @@ export class Draw {
     return this
   }
 
-  addChild(): Draw {
-    return this
+  toDataURL(type: 'image/png' | 'image/jpeg' | string = 'image/png', quality: number = 0.92): string {
+    return this.canvas.toDataURL(type, quality)
   }
-
-  render() {}
 
   static build(options: DrawOptions) {
     return new Draw(options)
-  }
-
-  static use(fn) {
-    fn(this)
   }
 }

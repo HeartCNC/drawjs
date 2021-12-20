@@ -12,18 +12,24 @@
   "author": "heartcnc <heartcnc@163.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "rollup -w -c --environment MODE:development",
+    "dev": "rollup -w -c --environment MODE:esm",
+    "compiler": "rollup -c --environment MODE:development",
     "build:cjs": "rollup -c --environment MODE:cjs",
     "build:esm": "rollup -c --environment MODE:esm",
     "build:umd": "rollup -c --environment MODE:umd",
     "build:umdMin": "rollup -c --environment MODE:umdMin",
-    "build": "rimraf dist && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:umdMin",
+    "build": "npm run clean && npm run compiler && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:umdMin",
     "lint": "eslint src scripts --fix",
-    "declare": "rimraf types && tsc --emitDeclarationOnly true --declarationDir types",
-    "clean": "rimraf dist && rimraf types",
+    "tsdoc": "rimraf types && tsc --declaration true --emitDeclarationOnly true --declarationDir types",
+    "clean": "rimraf dist types",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "canvas",
+    "poster",
+    "draw",
+    "Drawing Board"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@actly/eslint-config-base": "^0.1.1",

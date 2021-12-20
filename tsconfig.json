@@ -3,10 +3,7 @@
     "module": "ES2015",
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "./types",
-    "emitDeclarationOnly": false
+    "sourceMap": true
   },
   "baseUrl": ".",
   "lib": [

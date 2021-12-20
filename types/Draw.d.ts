@@ -18,7 +18,6 @@ export declare class Draw {
     line(): Draw;
     point(): Draw;
     addChild(): Draw;
-    render(): void;
     static build(options: DrawOptions): Draw;
     static use(fn: any): void;
 }

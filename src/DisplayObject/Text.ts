@@ -24,7 +24,7 @@ const defaultOptions: IText = {
   rowSpacing: 2,
   font: '',
   fontSize: 32,
-  fontFamily: 'Microsoft YaHei,Avenir,Helvetica Neue,Helvetica,Arial,sans-serif',
+  fontFamily: '',
   fontWeight: 'normal',
   letterSpacing: 0,
   color: ''
@@ -50,7 +50,8 @@ export class Text extends DisplayObject {
     )
   }
   render(context: CanvasRenderingContext2D) {
-    context.font = `${this.fontWeight} ${this.fontSize}px ${this.fontFamily}`
+    const fontFamily = this.fontFamily || getComputedStyle(context.canvas).fontFamily
+    context.font = `${this.fontWeight} ${this.fontSize}px ${fontFamily}`
     context.textBaseline = this.baseline
     context.fillStyle = this.color
 

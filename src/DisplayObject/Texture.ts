@@ -15,12 +15,12 @@ export class Texture extends DisplayObject {
   }
 
   render(context: CanvasRenderingContext2D) {
-    context.beginPath()
-    context.arc(this.x, this.y, 330, 0, Math.PI * 2, false)
-    context.stroke()
-    context.moveTo(this.x, this.y)
-    context.closePath()
-    context.clip()
+    // 裁剪
+    // context.beginPath()
+    // context.arc(this.x, this.y, 330, 0, Math.PI * 2, false)
+    // context.stroke()
+    // context.closePath()
+    // context.clip()
 
     context.drawImage(this.image, this.x, this.y, this.width, this.height)
   }

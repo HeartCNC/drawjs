@@ -17,14 +17,3 @@ export function assignOption(target: object, source: object): object {
   }
   return target
 }
-
-const preventDefaultException = { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/ }
-
-export function preventDefaultTest(element) {
-  for (const i in preventDefaultException) {
-    if (preventDefaultException[i].test(element[i])) {
-      return true
-    }
-  }
-  return false
-}
