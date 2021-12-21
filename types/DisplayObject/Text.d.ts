@@ -1,9 +1,10 @@
 import { DisplayObject, IDisplayObject } from "./index";
+export declare type TextJustifyAlign = 'center' | 'left' | 'right';
+export declare type TextItemAlign = 'center' | 'top' | 'bottom';
 export interface IText extends IDisplayObject {
     text: string;
-    align?: CanvasTextAlign;
-    baseline?: CanvasTextBaseline;
-    lineHeight?: number;
+    justifyAlign?: TextJustifyAlign;
+    itemAlign?: TextItemAlign;
     rowSpacing?: number;
     font?: string;
     fontSize?: number;
@@ -14,9 +15,8 @@ export interface IText extends IDisplayObject {
 }
 export declare class Text extends DisplayObject {
     text: string;
-    align: CanvasTextAlign;
-    baseline: CanvasTextBaseline;
-    lineHeight: number;
+    justifyAlign: TextJustifyAlign;
+    itemAlign: TextItemAlign;
     rowSpacing?: number;
     font: string;
     fontSize: number;

@@ -1,4 +1,14 @@
-export function loadImage(src: string): Promise<HTMLImageElement | undefined> {
+function load(srcName: string, url: string): Promise<void>
+function load(srcName: string): Promise<HTMLImageElement | void>
+function load(srcName: string, url?: string): Promise<HTMLImageElement | void> {
+  return url ? loadImage(srcName) : loadFont(srcName, url)
+}
+
+export {
+  load
+}
+
+export function loadImage(src: string): Promise<HTMLImageElement | void> {
   return new Promise((resolve, reject) => {
     const img = document.createElement('img')
     img.src = src
@@ -8,7 +18,7 @@ export function loadImage(src: string): Promise<HTMLImageElement | undefined> {
     }
     img.onerror = (e) => {
       console.warn(`Image '${src}' load error.`)
-      resolve(undefined)
+      resolve()
     }
   })
 }

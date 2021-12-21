@@ -15,10 +15,10 @@ export declare class Draw {
     image(options: ITexture): Draw;
     rectangle(options: IRectangle): Draw;
     circle(options: ICircle): Draw;
+    clear(): void;
     line(): Draw;
     point(): Draw;
-    addChild(): Draw;
+    toDataURL(type?: 'image/png' | 'image/jpeg' | string, quality?: number): string;
     static build(options: DrawOptions): Draw;
-    static use(fn: any): void;
 }
 export {};

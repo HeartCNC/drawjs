@@ -1,12 +1,14 @@
 import { assignOption, mergeOption } from "../shared/index"
-import { radius } from "../shared/var"
 import { DisplayObject, IDisplayObject } from "./index"
+
+export type TextJustifyAlign = 'center' | 'left' | 'right'
+
+export type TextItemAlign = 'center' | 'top' | 'bottom'
 
 export interface IText extends IDisplayObject {
   text: string
-  align?: CanvasTextAlign
-  baseline?: CanvasTextBaseline
-  lineHeight?: number
+  justifyAlign?: TextJustifyAlign
+  itemAlign?: TextItemAlign
   rowSpacing?: number
   font?: string
   fontSize?: number
@@ -18,9 +20,8 @@ export interface IText extends IDisplayObject {
 
 const defaultOptions: IText = {
   text: '',
-  align: 'start',
-  baseline: 'top',
-  lineHeight: 0,
+  justifyAlign: 'left',
+  itemAlign: 'top',
   rowSpacing: 2,
   font: '',
   fontSize: 32,
@@ -32,9 +33,8 @@ const defaultOptions: IText = {
 
 export class Text extends DisplayObject {
   public text: string
-  public align: CanvasTextAlign
-  public baseline: CanvasTextBaseline
-  public lineHeight: number
+  public justifyAlign: TextJustifyAlign
+  public itemAlign: TextItemAlign
   public rowSpacing?: number
   public font: string
   public fontSize: number
@@ -52,11 +52,13 @@ export class Text extends DisplayObject {
   render(context: CanvasRenderingContext2D) {
     const fontFamily = this.fontFamily || getComputedStyle(context.canvas).fontFamily
     context.font = `${this.fontWeight} ${this.fontSize}px ${fontFamily}`
-    context.textBaseline = this.baseline
     context.fillStyle = this.color
+    context.textBaseline = 'top'
+    context.textAlign = 'left'
 
     const originTextMetrics = context.measureText(this.text)
-    const singleRowHeight = originTextMetrics.actualBoundingBoxDescent + this.lineHeight
+
+    const singleRowHeight = originTextMetrics.actualBoundingBoxDescent
     // 文本总宽度
     let __actualWidth = 0
     // 处理 letterSpacing
@@ -96,20 +98,29 @@ export class Text extends DisplayObject {
       el.row = row
     }
 
-    context.textAlign = 'left'
+    /**
+     * The height of text after canvas measure
+     */
+    const textHeight = row * (this.rowSpacing + singleRowHeight) + singleRowHeight
+    /**
+     * According to the itemAlign and height compute offset
+     */
+    let offsety = 0
+    if (this.height > textHeight) {
+      if (this.itemAlign === 'bottom') {
+        offsety = this.height - textHeight
+      } else if (this.itemAlign === 'center') {
+        offsety = (this.height - textHeight) / 2
+      }
+    }
     arrText.forEach(item => {
       let rx = this.x
-      if (this.align === 'center') {
+      if (this.justifyAlign === 'center') {
         rx = this.x + (__width - arrTextRowWidth[item.row]) / 2
-      } else if (this.align === 'right') {
+      } else if (this.justifyAlign === 'right') {
         rx = this.x + __width - arrTextRowWidth[item.row]
       }
-      context.fillText(item.char, rx + item.x, item.y)
+      context.fillText(item.char, rx + item.x, offsety + item.y)
     })
-    // reset
-    context.textAlign = 'left'
-    context.setTransform(1, 0, 0, 1, 0, 0)
-    context.font = `12px sans-serif`
-    context.fillStyle = '#000'
   }
 }
