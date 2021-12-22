@@ -62,19 +62,7 @@ export class Draw {
     this.context.clearRect(0, 0, this.__options.width, this.__options.height)
   }
 
-  line(): Draw {
-    return this
-  }
-
-  point(): Draw {
-    return this
-  }
-
   toDataURL(type: 'image/png' | 'image/jpeg' | string = 'image/png', quality: number = 0.92): string {
     return this.canvas.toDataURL(type, quality)
-  }
-
-  static build(options: DrawOptions) {
-    return new Draw(options)
   }
 }

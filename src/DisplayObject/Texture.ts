@@ -2,7 +2,6 @@ import { IDisplayObject, DisplayObject } from "./index"
 
 export interface ITexture extends IDisplayObject {
   image: HTMLImageElement
-  radius?: number
 }
 
 export class Texture extends DisplayObject {

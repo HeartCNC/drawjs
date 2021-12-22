@@ -27,8 +27,7 @@
   "keywords": [
     "canvas",
     "poster",
-    "draw",
-    "Drawing Board"
+    "draw"
   ],
   "dependencies": {},
   "devDependencies": {

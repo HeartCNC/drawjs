@@ -16,3 +16,4 @@ package-lock.json
 *.sln
 *.sw?
 *.lock
+.npmrc
