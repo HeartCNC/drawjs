@@ -1,5 +1,5 @@
 {
-  "name": "drawjs",
+  "name": "@actly/drawjs",
   "version": "0.1.0",
   "description": "Simple create a poster base on Javascript.",
   "main": "dist/draw.js",

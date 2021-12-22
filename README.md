@@ -11,13 +11,13 @@
 npm
 
 ```bash
-npm install drawjs
+npm install @actly/drawjs
 ```
 
 浏览器
 
 ```html
-<script src="/path/to/drawjs.js"></script>
+<script src="/path/to/@actly/drawjs.js"></script>
 ```
 
 ### 用法
@@ -92,7 +92,7 @@ new Draw(options: DrawOptions): Draw
 #### 示例
 
 ```js
-import Draw, { utils } from 'drawjs'
+import Draw, { utils } from '@actly/drawjs'
 import bg from './assets/bg-poster.png'
 import font from './assets/font.ttf'
 
@@ -135,19 +135,19 @@ toCanvas()
 ### 工具方法
 
 ```js
-import Draw, { utils } from 'drawjs'
+import Draw, { utils } from '@actly/drawjs'
 import bg from './assets/bg.png'
 import font from './assets/font.ttf'
 
 async function loadResource() {
-    await utils.loadFont('myFont', font)
-    await utils.loadImage(bg)
+  await utils.loadFont('myFont', font)
+  await utils.loadImage(bg)
 }
 
 // 或者
 async function loadResource() {
-    await utils.load('myFont', font)
-    await utils.load(bg)
+  await utils.load('myFont', font)
+  await utils.load(bg)
 }
 loadResource()
 ```
