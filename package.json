@@ -1,7 +1,7 @@
 {
   "name": "drawjs",
   "version": "0.1.0",
-  "description": "",
+  "description": "Simple create a poster base on Javascript.",
   "main": "dist/draw.js",
   "module": "dist/draw.esm.js",
   "typings": "types/index.d.ts",
