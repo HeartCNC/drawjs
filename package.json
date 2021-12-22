@@ -2,6 +2,9 @@
   "name": "@actly/drawjs",
   "version": "0.1.0",
   "description": "Simple create a poster base on Javascript.",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/draw.js",
   "module": "dist/draw.esm.js",
   "typings": "types/index.d.ts",
@@ -10,6 +13,10 @@
     "types"
   ],
   "author": "heartcnc <heartcnc@163.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heartcnc/drawjs.git"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "rollup -w -c --environment MODE:esm",
