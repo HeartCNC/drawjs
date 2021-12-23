@@ -2,6 +2,8 @@
 
 ---
 
+![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/@actly/drawjs/0.1.0) ![npm](https://img.shields.io/npm/dw/@actly/drawjs) ![npm](https://img.shields.io/npm/v/@actly/drawjs)
+
 > 适用于浏览器的快速生成海报的 Javascript 库
 
 ## 入门
