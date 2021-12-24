@@ -98,7 +98,7 @@ import Draw, { utils } from '@actly/drawjs'
 import bg from './assets/bg-poster.png'
 import font from './assets/font.ttf'
 
-const draw = Draw.build({
+const draw = new Draw({
   width: 750,
   height: 1334
 })
