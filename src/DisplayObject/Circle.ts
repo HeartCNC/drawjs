@@ -1,27 +1,31 @@
-import { assignOption, mergeOption } from "../shared/index"
+import { assignOption } from "../shared/index"
 import { typeColor } from "../shared/type"
 import { PIx2 } from "../shared/var"
 import { DisplayObject, IDisplayObject } from "./index"
 
 export interface ICircle extends IDisplayObject {
+  /**
+   * 填充颜色
+   */
   color?: typeColor
+  /**
+   * 半径
+   */
   radius: number
 }
 
-const defaultOptions: ICircle = {
-  color: '',
-  radius: 0
-}
-
 export class Circle extends DisplayObject {
-  public color?: typeColor
-  public radius: number
+  /**
+   * 填充颜色
+   */
+  color?: typeColor = ''
+  /**
+   * 半径
+   */
+  radius: number = 0
   constructor(options?: ICircle) {
     super(options)
-    assignOption(
-      this,
-      mergeOption(defaultOptions, options)
-    )
+    assignOption(this, options)
   }
   
   render(context: CanvasRenderingContext2D) {

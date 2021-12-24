@@ -1,30 +1,39 @@
-import { assignOption, mergeOption } from '../shared/index'
+import { assignOption } from '../shared/index'
 import { typeColor } from '../shared/type'
 import { DisplayObject, IDisplayObject } from './index'
 
 export interface IRectangle extends IDisplayObject {
+  /**
+   * 填充颜色
+   */
   color?: typeColor
+  /**
+   * 边框线条的宽度
+   */
   borderWidth?: number
+  /**
+   * 边框的颜色
+   */
   borderColor?: string
-}
-
-const defaultOptions: IRectangle = {
-  color: '',
-  borderWidth: 0,
-  borderColor: ''
 }
 
 export class Rectangle extends DisplayObject {
-  color?: typeColor
-  borderWidth?: number
-  borderColor?: string
+  /**
+   * 填充颜色
+   */
+  color?: typeColor = ''
+  /**
+   * 边框线条的宽度
+   */
+  borderWidth?: number = 0
+  /**
+   * 边框的颜色
+   */
+  borderColor?: string = ''
 
   constructor(options?: IRectangle) {
     super(options)
-    assignOption(
-      this,
-      mergeOption(defaultOptions, options || {})
-    )
+    assignOption(this, options)
   }
 
   render(context: CanvasRenderingContext2D) {

@@ -1,4 +1,4 @@
-import { assignOption, mergeOption } from "../shared/index"
+import { assignOption } from "../shared/index"
 import { DisplayObject, IDisplayObject } from "./index"
 
 export type TextJustifyAlign = 'center' | 'left' | 'right'
@@ -6,48 +6,62 @@ export type TextJustifyAlign = 'center' | 'left' | 'right'
 export type TextItemAlign = 'center' | 'top' | 'bottom'
 
 export interface IText extends IDisplayObject {
+  /**
+   * 文本
+   */
   text: string
+  /**
+   * 水平对齐方式
+   */
   justifyAlign?: TextJustifyAlign
+  /**
+   * 垂直对齐方式
+   */
   itemAlign?: TextItemAlign
+  /**
+   * 行间距
+   */
   rowSpacing?: number
+  /**
+   * 字体样式
+   */
   font?: string
+  /**
+   * 字体大小
+   */
   fontSize?: number
+  /**
+   * 字体
+   */
   fontFamily?: string
+  /**
+   * 字体粗细
+   */
   fontWeight?: string
+  /**
+   * 字间距
+   */
   letterSpacing?: number
+  /**
+   * 颜色
+   */
   color?: string
 }
 
-const defaultOptions: IText = {
-  text: '',
-  justifyAlign: 'left',
-  itemAlign: 'top',
-  rowSpacing: 2,
-  font: '',
-  fontSize: 32,
-  fontFamily: '',
-  fontWeight: 'normal',
-  letterSpacing: 0,
-  color: ''
-}
-
 export class Text extends DisplayObject {
-  public text: string
-  public justifyAlign: TextJustifyAlign
-  public itemAlign: TextItemAlign
-  public rowSpacing?: number
-  public font: string
-  public fontSize: number
-  public fontFamily: string
-  public fontWeight: string
-  public letterSpacing: number
-  public color: string
+  text: string = ''
+  justifyAlign: TextJustifyAlign = 'left'
+  itemAlign: TextItemAlign = 'top'
+  rowSpacing?: number = 2
+  font: string = ''
+  fontSize: number = 32
+  fontFamily: string = ''
+  fontWeight: string = 'normal'
+  letterSpacing: number = 0
+  color: string = ''
   constructor(options?: IText) {
     super(options)
-    assignOption(
-      this,
-      mergeOption(defaultOptions, options || {})
-    )
+    assignOption(this, options)
   }
   render(context: CanvasRenderingContext2D) {
     const fontFamily = this.fontFamily || getComputedStyle(context.canvas).fontFamily
@@ -99,11 +113,11 @@ export class Text extends DisplayObject {
     }
 
     /**
-     * The height of text after canvas measure
+     * 测量文本的高度
      */
     const textHeight = row * (this.rowSpacing + singleRowHeight) + singleRowHeight
     /**
-     * According to the itemAlign and height compute offset
+     * 根据垂直对齐方式计算的高度偏移量
      */
     let offsety = 0
     if (this.height > textHeight) {

@@ -3,25 +3,23 @@ import { Circle, ICircle } from "./DisplayObject/Circle"
 import { IRectangle, Rectangle } from "./DisplayObject/Rectangle"
 import { IText, Text } from "./DisplayObject/Text"
 import { ITexture, Texture } from "./DisplayObject/Texture"
-import { mergeOption } from "./shared/index"
+import { assignOption } from "./shared/index"
 
 interface DrawOptions {
   width: number
   height: number
 }
 
-const defaultOptions: DrawOptions = {
-  width: 750,
-  height: 1334
-}
-
 export class Draw {
   canvas: HTMLCanvasElement
   context: CanvasRenderingContext2D
-  __options: DrawOptions
+  __options: DrawOptions = {
+    width: 750,
+    height: 1334
+  }
 
   constructor(options?: DrawOptions) {
-    this.__options = <DrawOptions>mergeOption(defaultOptions, options || {})
+    assignOption(this.__options, options)
     this.canvas = document.createElement('canvas')
     this.canvas.width = this.__options.width
     this.canvas.height = this.__options.height
