@@ -68,9 +68,9 @@ new Draw(options: DrawOptions): Draw
 |      text       |  string  |         |      渲染在画布上的文本      |
 | justifyAlign |  TextJustifyAlign  |    left     |     水平对齐方式      |
 | itemAlign |  TextItemAlign  |   top |     垂直对齐方式     |
-|    rowSpacing    |  number  |   1334   |     行间距     |
+|    rowSpacing    |  number  |   0   |     行间距     |
 |    fontSize    |  number  |    0     | 字体大小 |
-| fontFamily |  string  |    1     |      字体      |
+| fontFamily |  string  |         |      字体      |
 | fontWeight | string | normal | 字体粗细 |
 | letterSpacing | number | 0 | 字间距 |
 | color | string |  | 文本颜色 |
@@ -167,3 +167,7 @@ loadResource()
 - `loadFont(fontFamily: string, url: string): Promise<void>`
 
 加载字体资源
+
+## Issues
+
+[https://github.com/HeartCNC/drawjs/issues](https://github.com/HeartCNC/drawjs/issues)
