@@ -1,2 +1,6 @@
-export declare function mergeOption(target: object, source: object): any;
+/**
+ * merge default option and user's option
+ * @param target
+ * @param source
+ */
 export declare function assignOption(target: object, source: object): object;

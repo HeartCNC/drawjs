@@ -14,6 +14,9 @@ export interface ICircle extends IDisplayObject {
   radius: number
 }
 
+/**
+ * 绘制圆形
+ */
 export class Circle extends DisplayObject {
   /**
    * 填充颜色

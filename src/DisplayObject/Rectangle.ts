@@ -17,6 +17,9 @@ export interface IRectangle extends IDisplayObject {
   borderColor?: string
 }
 
+/**
+ * 绘制矩形
+ */
 export class Rectangle extends DisplayObject {
   /**
    * 填充颜色

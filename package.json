@@ -1,7 +1,7 @@
 {
   "name": "@actly/drawjs",
-  "version": "0.1.0",
-  "description": "Simple create a poster base on Javascript.",
+  "version": "0.1.1",
+  "description": "JavaScript library for fast generated posters suitable for browsers.",
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +27,7 @@
     "build:umdMin": "rollup -c --environment MODE:umdMin",
     "build": "npm run clean && npm run tsdoc && npm run compiler && npm run build:cjs && npm run build:esm && npm run build:umd && npm run build:umdMin",
     "lint": "eslint src scripts --fix",
-    "tsdoc": "rimraf types && tsc --declaration true --emitDeclarationOnly true --declarationDir types",
+    "tsdoc": "rimraf types && tsc --declaration true --emitDeclarationOnly true --declarationDir types --removeComments false",
     "clean": "rimraf dist types",
     "test": "jest"
   },

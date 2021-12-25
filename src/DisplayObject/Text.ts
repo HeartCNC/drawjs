@@ -48,6 +48,9 @@ export interface IText extends IDisplayObject {
   color?: string
 }
 
+/**
+ * 绘制文本
+ */
 export class Text extends DisplayObject {
   text: string = ''
   justifyAlign: TextJustifyAlign = 'left'

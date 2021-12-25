@@ -8,6 +8,9 @@ export interface ITexture extends IDisplayObject {
   image: HTMLImageElement
 }
 
+/**
+ * 绘制图像
+ */
 export class Texture extends DisplayObject {
   image: HTMLImageElement = null
   constructor(options?: ITexture) {
