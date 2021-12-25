@@ -33,7 +33,7 @@ npm install @actly/drawjs
 CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@actly/drawjs@0.1.0/dist/draw.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@actly/drawjs@0.1.1/dist/draw.min.js"></script>
 ```
 
 ## 🔧 用法
