@@ -7,6 +7,7 @@ const nodeResolve = require('rollup-plugin-node-resolve')
 const replace = require('rollup-plugin-replace')
 const buble = require('rollup-plugin-buble')
 const typescript = require('rollup-plugin-typescript2')
+const cleanup = require('rollup-plugin-cleanup')
 const pkgJson = require('./package.json')
 const version = pkgJson.version
 const name = 'draw'
@@ -98,7 +99,10 @@ const genConfig = (env) => {
       commonjs(),
       typescript(),
       replace(placeholder),
-      buble()
+      buble(),
+      cleanup({
+        comments: 'none'
+      })
     ].concat(opt.plugins || [])
   }
 
